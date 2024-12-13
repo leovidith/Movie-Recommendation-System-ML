@@ -1,4 +1,4 @@
-# Movie Recommendation System - README
+# Movie Recommendation System
 
 ## Abstract
 
