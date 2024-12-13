@@ -13,6 +13,8 @@ Regression models are used in this project because the task is to predict a **co
 
 In this case, we aim to predict ratings, which can take any value within a range, making regression an appropriate choice. We evaluated different regression models to find the one with the best performance.
 
+## BarPlot of `Genre` column
+<img src="https://github.com/leovidith/Movie-Recommendation-System-ML/blob/main/images/barplot.png" width=1000px>
 
 ## Model Performance
 
