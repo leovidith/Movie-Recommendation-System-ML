@@ -1,24 +1,20 @@
 # Movie Recommendation System
 
-## Abstract
+## Overview
+This project implements a movie recommendation system that predicts user ratings for movies based on various features, such as genre, runtime, and vote count. The system utilizes regression-based models to make predictions. Users can input their preferred genres and receive movie recommendations based on predicted ratings. The model is trained on a dataset that includes features like movie title, genre, runtime, release year, and vote count. The primary objective is to predict the **user score** (ratings), helping users find movies that match their preferences.
 
-This program implements a movie recommendation system that predicts user ratings for movies based on their features, such as genre, runtime, and vote count. The system uses regression-based models to make predictions, and users can input their preferred genres to receive movie recommendations based on predicted ratings. The model is trained on a dataset that includes features such as movie title, genre, runtime, release year, and vote count.
+## Results
 
-The primary objective of the system is to predict the **user score** (ratings) for movies, helping users find movies that are likely to match their preferences based on their selected genres.
+### Dataset Visualization
 
+#### Bar Plot of `Genre` Column
+The bar plot visualizes the frequency of different genres in the dataset, providing insight into the distribution of genres across the movie collection.
 
-## Why Did We Use Regression?
+<img src="https://github.com/leovidith/Movie-Recommendation-System-ML/blob/main/images/barplot.png" width="1000px">
 
-Regression models are used in this project because the task is to predict a **continuous** value—the **user score** (rating) of a movie. Unlike classification, where the outcome is discrete (like assigning a label), regression allows us to predict values on a continuous scale. 
+### Model Performance
 
-In this case, we aim to predict ratings, which can take any value within a range, making regression an appropriate choice. We evaluated different regression models to find the one with the best performance.
-
-## BarPlot of `Genre` column
-<img src="https://github.com/leovidith/Movie-Recommendation-System-ML/blob/main/images/barplot.png" width=1000px>
-
-## Model Performance
-
-The table below summarizes the performance of various regression models on the test set, evaluated using **Mean Absolute Error (MAE)** and **Mean Squared Error (MSE)**.
+The table below summarizes the performance of several regression models evaluated using **Mean Absolute Error (MAE)** and **Mean Squared Error (MSE)** on the test set.
 
 | Model                    | MAE  | MSE  |
 |--------------------------|------|------|
@@ -28,21 +24,29 @@ The table below summarizes the performance of various regression models on the t
 | XGBoost Regressor         | 0.50 | 0.41 |
 | Gradient Boosting Regressor | 0.48 | 0.39 |
 
+## Features
+- **Genre**: The genre of the movie, which can influence the predicted rating.
+- **Runtime**: The total duration of the movie in minutes.
+- **Vote Count**: The number of votes the movie has received.
+- **Release Year**: The year the movie was released.
+- **User Score**: The predicted rating for the movie, used as the target for training.
 
+## Sprints
+1. **Data Preprocessing**:
+   - Cleaned and transformed the raw dataset.
+   - Handled missing data and standardized numerical features.
+  
+2. **Model Training**:
+   - Evaluated various regression models like Linear Regression, Decision Tree, Random Forest, XGBoost, and Gradient Boosting.
+   - Fine-tuned model parameters to optimize performance.
+  
+3. **Model Evaluation**:
+   - Performance evaluation based on MAE and MSE.
+   - Gradient Boosting Regressor outperformed other models in predicting user ratings.
 
-## Highlighting Gradient Boosting Regressor
-
-Among all the models tested, the **Gradient Boosting Regressor** yielded the **lowest MAE (0.48)** and **MSE (0.39)**, outperforming the other models. These metrics suggest that the Gradient Boosting Regressor provides the most accurate predictions of the user scores, making it the best choice for this movie recommendation system.
-
-
-## Use of `user_score` in Both Features and Labels
-
-We initially attempted to exclude the **`user_score`** column from the feature dataframe, but this approach led to failures in the execution of the `recommend_movie` function. Specifically, whenever we removed `user_score` from the feature set, the function would not work properly and throw errors. As a result, we decided to keep `user_score` as part of the training process, but it is **only used as the target label** during training. It is not used as a feature during prediction or recommendation.
-
+4. **Final Model**:
+   - Implemented the Gradient Boosting Regressor for movie recommendations.
+   - Ensured proper use of `user_score` as the target label in the training phase.
 
 ## Conclusion
-
-The movie recommendation system leverages various regression models to predict user ratings and recommend movies based on the user's preferred genres. After testing multiple models, we found that the **Gradient Boosting Regressor** provided the best performance in terms of accuracy. This model is now used to generate recommendations based on the user's input.
-
-By accurately predicting the user score for movies, the system helps users discover movies they may enjoy, improving their overall experience with movie selection.
-
+The movie recommendation system predicts user ratings using regression models. After evaluating multiple models, the **Gradient Boosting Regressor** proved to be the most accurate, providing the best user score predictions. This model is used to generate movie recommendations based on the user's genre preferences. The system helps users discover movies they are likely to enjoy, enhancing their movie selection experience.
